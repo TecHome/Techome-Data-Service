@@ -5,7 +5,7 @@ const routeNames = require('../resources/routes');
 const productService = require('../app/services/productService');
 
 router.get(
-    routeNames.emptyUrl,
+    routeNames.empty,
     async (request, response) => {
         try {
             const products = await productService.getProducts(request, response);
