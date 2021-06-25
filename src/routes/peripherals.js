@@ -5,7 +5,7 @@ const routeNames = require('../resources/routes');
 const peripheralServicie = require('../app/services/peripheralService');
 
 router.get(
-    routeNames.emptyUrl,
+    routeNames.empty,
     async (request, response) => {
         try {
             const peripherals = await peripheralServicie.getPeripherals(request, response);
@@ -30,5 +30,18 @@ router.get(
         }
     }
 );
+
+router.post(
+    routeNames.empty,
+    async (request, response) => {
+        try {
+            const newPeripheral = await peripheralServicie.createPeripheral(request, response);
+            response.set('Content-type', 'application/json');
+            response.status(200).end(JSON.stringify(newPeripheral));
+        } catch (error) {
+            response.status(404).send('Error while creating Peripheral');
+        }
+    }
+)
 
 module.exports = router;

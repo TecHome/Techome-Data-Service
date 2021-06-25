@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    emptyUrl: '',
+    empty: '',
     id: '/:id',
     products: {
         url: '/products'

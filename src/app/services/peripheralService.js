@@ -1,4 +1,5 @@
 const { Peripheral, Product } = require('../models');
+const productService = require('./productService');
 
 const PeripheralService = {
     getPeripherals: async (request, response) => {
@@ -44,5 +45,24 @@ const PeripheralService = {
             throw error;
         };
     },
+
+    //POST
+    createPeripheral: async (request, response )=>{
+        try {
+            const product = await productService.createProduct(request.body.product, response)
+            delete request.body.product;
+            const newPeripheral = await Peripheral.create({
+                ...request.body,
+                ProductId: product.response.id
+            });
+            const result = {
+                message: 'Peripheral created successfully',
+                response: newPeripheral
+            };
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 module.exports = PeripheralService;

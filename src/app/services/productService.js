@@ -1,6 +1,8 @@
 const { Product } = require('../models');
 
 const ProductService = {
+
+    //GET
     getProducts: async (request, response) => {
         try {
             let products = await Product.findAll({
@@ -23,6 +25,20 @@ const ProductService = {
         } catch (error) {
             throw error;
         };
+    },
+
+    //POST
+    createProduct: async (request, response) => {
+        try {
+            const newProduct = await Product.create(request);
+            const result = {
+                message: 'Product created successfully',
+                response: newProduct.dataValues
+            };
+            return result;
+        } catch (error) {
+            throw error;
+        }
     },
 
 }

@@ -5,7 +5,7 @@ const routeNames = require('../resources/routes');
 const consoleService = require('../app/services/consoleService');
 
 router.get(
-    routeNames.emptyUrl,
+    routeNames.empty,
     async (request, response) => {
         try {
             const consoles = await consoleService.getConsoles(request, response);
@@ -27,6 +27,19 @@ router.get(
             response.status(200).end(JSON.stringify(consoleR));
         } catch (error) {
             response.status(404).send('Console Not Found');
+        }
+    }
+);
+
+router.post(
+    routeNames.empty,
+    async (request, response) => {
+        try {
+            const newConsole = await consoleService.createConsole(request, response);
+            response.set('Content-type', 'application/json');
+            response.status(200).end(JSON.stringify(newConsole));
+        } catch (error) {
+            response.status(404).send('Error while creating Console');
         }
     }
 );

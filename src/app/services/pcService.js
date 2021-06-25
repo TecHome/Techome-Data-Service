@@ -1,6 +1,8 @@
 const { PC, Product } = require('../models');
+const productService = require('./productService');
 
 const PCService = {
+    //GET
     getPCs: async (request, response) => {
         try {
             let pcs = await PC.findAll({
@@ -43,6 +45,25 @@ const PCService = {
         } catch (error) {
             throw error;
         };
+    },
+
+    //POST
+    createPC: async (request, response) => {
+        try {
+            const product = await productService.createProduct(request.body.product, response);
+            delete request.body.product;
+            const newPC = await PC.create({
+                ...request.body,
+                ProductId: product.response.id
+            });
+            const result = {
+                message: 'PC created successfully', 
+                response: newPC
+            };
+            return result;
+        } catch (error) {
+            throw error;
+        }
     },
 }
 module.exports = PCService;
