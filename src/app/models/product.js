@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         Product.hasMany(models.Console, { as: 'console' });
         Product.hasMany(models.PC, { as: 'pc' });
         Product.hasMany(models.Peripheral, { as: 'peripheral' });
+        Product.hasMany(models.Order, { as: 'order' });
     };
     return Product;
 }
