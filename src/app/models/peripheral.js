@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         'size': DataTypes.STRING,
         'weight': DataTypes.STRING,
         'colors': DataTypes.STRING,
+        'type': DataTypes.STRING,
         'ProductId': DataTypes.INTEGER,
     }, {});
     Peripheral.associate = function (models) {
