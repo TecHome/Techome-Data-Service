@@ -3,10 +3,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nombresRutas = require('./resources/routes');
 const cors = require('cors');
-const products = require ('./routes/products')
-const peripherals = require ('./routes/peripherals')
-const consoles = require ('./routes/consoles')
-const pcs = require ('./routes/pcs')
+const products = require('./routes/products')
+const peripherals = require('./routes/peripherals')
+const consoles = require('./routes/consoles')
+const pcs = require('./routes/pcs')
+const orders = require('./routes/orders')
+const users = require('./routes/users')
 
 const ROUTE_URL = '/api';
 
@@ -25,6 +27,8 @@ class Application {
         this.express.use(ROUTE_URL + nombresRutas.peripherals.url, peripherals);
         this.express.use(ROUTE_URL + nombresRutas.consoles.url, consoles);
         this.express.use(ROUTE_URL + nombresRutas.pcs.url, pcs);
+        this.express.use(ROUTE_URL + nombresRutas.orders.url, orders);
+        this.express.use(ROUTE_URL + nombresRutas.users.url, users);
     }
 
     setUpExpress() {

@@ -18,7 +18,7 @@ module.exports = {
                 allowNull: true
             },
             date: {
-                type: Sequelize.DATE,
+                type: Sequelize.STRING,
                 allowNull: true
             },
             discount: {
@@ -26,7 +26,7 @@ module.exports = {
                 allowNull: true
             },
             deliveryDate: {
-                type: Sequelize.DATE,
+                type: Sequelize.STRING,
                 allowNull: true
             },
             card: {

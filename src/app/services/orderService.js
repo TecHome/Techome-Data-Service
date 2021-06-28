@@ -1,4 +1,4 @@
-const { Order, Product } = require('../models');
+const { Order, Product, User } = require('../models');
 const productService = require('./productService');
 
 const OrderService = {
@@ -9,12 +9,17 @@ const OrderService = {
                 raw: true,
                 nest: true,
                 attributes: {
-                    exclude: ['ProductId']
+                    exclude: ['ProductId', 'UserId']
                 },
                 include: [
                     {
                         model: Product,
                         as: 'product',
+                        attributes: { exclude: ['id'] }
+                    },
+                    {
+                        model: User,
+                        as: 'user',
                         attributes: { exclude: ['id'] }
                     }
                 ]
@@ -38,7 +43,12 @@ const OrderService = {
                         model: Product,
                         as: 'product',
                         attributes: { exclude: ['id'] }
-                    }
+                    },
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: { exclude: ['id'] }
+                    },
                 ]
             });
             return { response: order };
@@ -50,8 +60,6 @@ const OrderService = {
     //POST
     createOrder: async (request, response) => {
         try {
-            //const product = await productService.createProduct(request.body.product, response);
-            //delete request.body.product;
             const newOrder = await Order.create(request.body);
             const result = {
                 message: 'Order created successfully', 

@@ -14,5 +14,11 @@ module.exports = {
     },
     peripherals: {
         url: '/peripherals'
+    },
+    users: {
+        url: '/users'
+    },
+    orders: {
+        url: '/orders'
     }
 };

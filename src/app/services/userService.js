@@ -43,7 +43,7 @@ const UserService = {
     //POST
     createUser: async (request, response) => {
         try {
-            const newUser = await User.create(request);
+            const newUser = await User.create(request.body);
             const result = {
                 message: 'User created successfully',
                 response: newUser.dataValues
