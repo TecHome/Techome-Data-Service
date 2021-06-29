@@ -36,7 +36,7 @@ const PeripheralService = {
                     {
                         model: Product,
                         as: 'product',
-                        attributes: { exclude: ['id'] }
+                        //attributes: { exclude: ['id'] }
                     }
                 ]
             });

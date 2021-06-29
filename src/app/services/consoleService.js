@@ -34,7 +34,7 @@ const ConsoleService = {
                 include: [{
                     model: Product,
                     as: 'product',
-                    attributes: { exclude: ['id'] }
+                    //attributes: { exclude: ['id'] }
                 }]
             });
             return { response: consoleR };
